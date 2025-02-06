@@ -1,0 +1,896 @@
+@use './colors' as *;
+@use './mixins' as *;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.6rem;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1300px;
+}
+
+.section-padding {
+	padding: 4em 2em;
+}
+
+.section-title {
+	position: relative;
+	text-align: center;
+	margin-bottom: 2em;
+	font-size: 2.5rem;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+//NAV
+.nav-desktop {
+	display: none;
+}
+
+.burger-btn {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	padding: 1em;
+	background: none;
+	border: 1px solid transparent;
+	cursor: pointer;
+	z-index: 1000;
+
+	&__box {
+		position: relative;
+		width: 40px;
+		height: 30px;
+	}
+
+	&__bars,
+	&__bars::before,
+	&__bars::after {
+		position: absolute;
+		right: 0;
+		height: 3px;
+		content: '';
+		background-color: $burger;
+	}
+
+	&__bars {
+		width: 100%;
+
+		&::before {
+			top: 13px;
+			width: 60%;
+		}
+
+		&::after {
+			top: 27px;
+			width: 80%;
+		}
+	}
+}
+
+.nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	width: 75%;
+	transform: translateX(-101%);
+	background-color: $nav-bg;
+	z-index: 1000;
+	transition: transform 0.5s;
+
+	&--active {
+		transform: translateX(0);
+	}
+
+	&__items {
+		padding: 2em 0;
+	}
+
+	&__link {
+		display: block;
+		margin: 0.5em 0;
+		padding: 0.5em 2em;
+		font-size: 3rem;
+		color: $white;
+		text-decoration: none;
+	}
+}
+
+//HEADER
+.header {
+	position: relative;
+	height: 250px;
+	background-image: url('../img/forest-mini.jpg');
+	background-position: center;
+	background-size: cover;
+
+	&__shadow {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: $shadow-color;
+	}
+
+	&__text {
+		position: absolute;
+		top: 50%;
+		left: 5%;
+		transform: translateY(-50%);
+		font-size: 1rem;
+		color: $white;
+
+		&-title {
+			margin-top: 3px;
+		}
+	}
+}
+
+//ABOUT US
+.aboutus {
+	&__box {
+		display: flex;
+		flex-direction: column;
+
+		&-title {
+			margin-bottom: 0.5em;
+		}
+	}
+
+	&__text {
+		font-size: 1.4rem;
+	}
+
+	&__img {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+}
+
+//ADVENTURE
+.adventure {
+	position: relative;
+	height: 250px;
+	background-image: url('../img/main-mini.jpg');
+	background-size: 100%;
+	background-position: center;
+	transition: background-size 1s;
+	&:hover {
+		background-size: 120%;
+	}
+
+	&__shadow {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: $shadow-color;
+	}
+
+	&__text {
+		@include middle;
+
+		&-title {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			padding: 1em 3em;
+			font-size: 1.8rem;
+			color: $white;
+			border: 1px solid $white;
+			z-index: 10;
+		}
+	}
+}
+
+// OFFER
+.offer {
+	.section-title {
+		margin-bottom: 1em;
+	}
+
+	&__title {
+		@include middle;
+	}
+
+	&__cards {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 0.5em;
+	}
+
+	&__card {
+		padding: 1em;
+		margin: 1em;
+		width: 70%;
+		box-shadow: 0px 5px 13px $shadow-color;
+		border-radius: 8px;
+
+		&-title,
+		&-price {
+			display: flex;
+			justify-content: center;
+		}
+
+		&-title {
+			font-size: 2.2rem;
+			font-weight: 400;
+		}
+
+		&-price {
+			padding: 0.5em;
+			font-size: 2.3rem;
+			font-weight: bold;
+		}
+
+		&-list {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+
+			&--item {
+				list-style: none;
+			}
+
+			.fa-check {
+				color: $btn-color;
+			}
+
+			.check {
+				margin-right: 2em;
+			}
+		}
+
+		&-btn {
+			display: block;
+			margin: 1em auto;
+			margin-top: 1.5em;
+			padding: 0.5em 3em;
+			background-color: #fff;
+			border-radius: 6px;
+			border: none;
+			box-shadow: 0px 5px 13px $shadow-color;
+			transition: background-color 0.3s, box-shadow 0.3s;
+
+			&:hover,
+			&:focus {
+				background-color: $btn-color;
+				box-shadow: 0px 0px 15px $btn-color;
+			}
+		}
+	}
+
+	.fa-minus,
+	.disable {
+		color: $shadow-color;
+	}
+
+	&__others {
+		@include middle;
+		padding: 1em;
+		margin-top: 1em;
+		text-decoration: none;
+		color: $black;
+		box-shadow: 0px 5px 13px $shadow-color;
+		border-radius: 8px;
+		cursor: pointer;
+
+		&:focus,
+		&:hover {
+			box-shadow: 0px 0px 25px $btn-color;
+			text-decoration: none;
+		}
+
+		.fa-solid {
+			margin-left: 0.5em;
+		}
+	}
+}
+
+.footer {
+	position: relative;
+	background-color: $footer-bg;
+	overflow: hidden;
+
+	hr {
+		display: flex;
+		justify-content: center;
+		margin-top: 1em;
+		height: 0.5px;
+		width: 100vw;
+		border: none;
+		background-color: $black;
+		transform: translateX(-7%);
+	}
+
+	&__logo {
+		position: absolute;
+		top: 10%;
+		left: 10%;
+		padding-right: 4em;
+		font-size: 3.6rem;
+		text-decoration: none;
+		color: $black;
+	}
+
+	&__cards {
+		@include middle;
+		padding-right: 3em;
+	}
+
+	&__card {
+		padding: 0.5em;
+		margin-top: 1em;
+		line-height: 2em;
+
+		a {
+			text-decoration: none;
+			color: $black;
+		}
+
+		&-item {
+			cursor: pointer;
+		}
+
+		&-last {
+			margin-top: -1em;
+		}
+	}
+
+	&__bottom {
+		@include middle;
+		margin-top: 1em;
+		margin-bottom: -3em;
+		padding-right: 2em;
+	}
+}
+
+// OFFERS
+.offers {
+	@include bgPosition;
+	background-image: url('../img/forest-mini.jpg');
+
+	&__shadow {
+		@include shadowBg;
+	}
+
+	&__cards {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 1em;
+		padding: 1em;
+		box-shadow: 0px 5px 13px $shadow-color;
+		border-radius: 8px;
+		z-index: 100;
+
+		&-img {
+			width: 95%;
+			border-radius: 8px;
+		}
+
+		&-title {
+			padding: 0.5em 0;
+			transition: color 0.3s;
+
+			&:hover {
+				color: $btn-color;
+			}
+		}
+
+		&-title,
+		&-text {
+			text-align: center;
+			color: $white;
+		}
+	}
+}
+
+// KONTAKT
+.contact {
+	@include bgPosition;
+	height: 670px;
+	background-image: url('../img/forest-mini.jpg');
+
+	&__title {
+		margin: 1em 5.5em;
+		margin-bottom: 0;
+		padding: 0.4em 0;
+		color: $white;
+		box-shadow: 0px 5px 13px $shadow-color;
+		border-radius: 8px;
+	}
+
+	&__shadow {
+		@include shadowBg;
+	}
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__form,
+	&__form-top {
+		display: flex;
+		flex-direction: column;
+		margin-left: 0.5em;
+		margin-top: 1em;
+		font-size: 1.2rem;
+		z-index: 100;
+
+		&-label {
+			margin-left: 0.5em;
+			margin-bottom: 0.5em;
+			color: $white;
+			text-transform: uppercase;
+		}
+
+		&-input {
+			margin-bottom: 1em;
+			padding: 0.6em 1.2em;
+			width: 70%;
+			border: none;
+			border-radius: 8px;
+		}
+
+		&-text {
+			margin-bottom: 2em;
+			padding: 0.6em 1.2em;
+			border: none;
+			border-radius: 8px;
+
+			min-width: 70%;
+			max-width: 70%;
+			width: 70%;
+			min-height: 100px;
+			max-height: 150px;
+		}
+
+		&-btn {
+			align-self: flex-start;
+			padding: 1em;
+			margin-left: 0.5em;
+			width: 50%;
+			max-width: 300px;
+			text-transform: uppercase;
+			background-color: $white;
+			border-radius: 6px;
+			border: none;
+			box-shadow: 0px 5px 13px $shadow-color;
+			transition: background-color 0.3s, box-shadow 0.3s;
+
+			&:hover,
+			&:focus {
+				background-color: $btn-color;
+				box-shadow: 0px 0px 15px $btn-color;
+			}
+		}
+	}
+
+	.location {
+		margin: 1em;
+		margin-top: 2em;
+		z-index: 100;
+
+		iframe {
+			width: 350px;
+			height: 200px;
+			border-radius: 8px;
+		}
+	}
+}
+
+//////////////////////////////////
+/// MEDIA
+/// //////////////////////////////
+
+@media (min-width: 567px) {
+	.header {
+		&__text {
+			font-size: 1.8rem;
+		}
+	}
+}
+@media (min-width: 768px) {
+	.burger-btn {
+		&__box {
+			width: 40px;
+			height: 30px;
+		}
+
+		&__bars {
+			&::after {
+				top: 13px;
+			}
+
+			&::before {
+				top: 27px;
+			}
+		}
+	}
+
+	.aboutus {
+		&__box {
+			flex-direction: row;
+			justify-content: space-between;
+
+			&-img {
+				width: 48%;
+			}
+
+			&-text {
+				width: 47%;
+			}
+		}
+
+		&__img {
+			margin-bottom: 0;
+			max-height: 500px;
+		}
+	}
+
+	.adventure {
+		height: 300px;
+
+		&__text {
+			&-title {
+				font-size: 3rem;
+			}
+		}
+	}
+
+	.offer {
+		&__cards {
+			flex-direction: row;
+		}
+
+		&__card {
+			margin: 0.5em;
+			min-height: 300px;
+
+			&-btn {
+				padding: 1em 4em;
+				margin-top: 2.5em;
+			}
+		}
+
+		&__others {
+			margin: 2em 7em;
+		}
+	}
+
+	.footer {
+		&__logo {
+			top: 33%;
+		}
+
+		&__cards {
+			margin-left: 10em;
+		}
+	}
+
+	.footer {
+		hr {
+			transform: translateX(-5%);
+		}
+	}
+
+	.offers {
+		background-image: url('../img/forest-big.jpg');
+
+		&__card {
+			margin: 2em;
+			padding: 1.5em;
+
+			&-title {
+				font-size: 2.5rem;
+			}
+
+			&-text {
+				font-size: 1.8rem;
+			}
+
+			&-img {
+				width: 90%;
+			}
+		}
+	}
+
+	.contact {
+		height: 900px;
+
+		&__title {
+			margin: 2em 5.2em 1.2em 5.2em;
+		}
+
+		&__form {
+			margin-left: 7.6em;
+			font-size: 1.6rem;
+
+			&-label,
+			&-input {
+				font-size: 1.6rem;
+			}
+		}
+
+		.location {
+			iframe {
+				margin-top: 2em;
+				margin-left: 6.9em;
+				width: 71%;
+				height: 300px;
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.nav-mobile,
+	.burger-btn {
+		display: none;
+	}
+
+	.nav-desktop {
+		position: fixed;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 9vh;
+		background-color: $white;
+		z-index: 5000;
+
+		&__logo {
+			font-size: 3.5rem;
+			text-decoration: none;
+			color: $black;
+		}
+
+		&__link {
+			padding: 1.5em;
+			margin: 0 auto;
+			font-size: 2rem;
+			text-decoration: none;
+			color: $black;
+			transition: color 0.3s, background-color 0.3s;
+
+			&:hover {
+				color: $white;
+				background-color: $black;
+			}
+		}
+	}
+
+	.active {
+		color: $white;
+		background-color: $black;
+	}
+
+	.header {
+		height: 500px;
+		background-image: url('../img/forest-big.jpg');
+
+		&__text {
+			left: 15%;
+			top: 55%;
+			transform: translateY(-50%);
+			padding: 1em;
+			font-size: 2rem;
+		}
+	}
+
+	.section-title {
+		font-size: 3.5rem;
+	}
+
+	.aboutus {
+		&__text {
+			line-height: 2.5rem;
+		}
+
+		&__box {
+			flex-direction: row;
+			justify-content: space-between;
+
+			&-img {
+				width: 45%;
+			}
+
+			&-text {
+				width: 50%;
+				font-size: 2rem;
+			}
+		}
+	}
+
+	.adventure {
+		height: 400px;
+		background-image: url('../img/main-big.jpg');
+
+		&__text {
+			&-title {
+				padding: 1em 3em;
+				font-size: 3.6rem;
+			}
+		}
+	}
+
+	.offer {
+		&__title {
+			margin-bottom: 1em;
+		}
+		&__card {
+			margin: 1em;
+			width: 25%;
+
+			&-title {
+				font-size: 2.6rem;
+			}
+
+			&-price {
+				font-size: 2.6rem;
+			}
+
+			&-list {
+				padding: 0.5em 0;
+				&--item {
+					line-height: 1.8em;
+				}
+			}
+
+			&-btn {
+				margin-top: 1.5em;
+				padding: 1em 5em;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+		}
+
+		&__others {
+			margin: 1em 23em;
+		}
+	}
+
+	.footer {
+		&__logo {
+			left: 23%;
+			font-size: 4rem;
+		}
+		&__cards {
+			justify-content: flex-end;
+			margin-right: 10em;
+		}
+
+		&__card {
+			padding: 2em;
+			font-size: 1.7rem;
+		}
+	}
+
+	.footer {
+		hr {
+			transform: translateX(-3%);
+		}
+	}
+
+	.offers {
+		&__cards {
+			display: flex;
+			flex-direction: row;
+			margin-top: -3em;
+			margin-bottom: 8em;
+			margin-left: -17em;
+		}
+
+		&__card {
+			&-img {
+				width: 500px;
+				height: 350px;
+				transition: transform 1s;
+				overflow: hidden;
+
+				&:hover {
+					transform: scale(1.05);
+				}
+			}
+		}
+	}
+
+	.contact {
+		background-image: url('../img/forest-big.jpg');
+	}
+}
+
+@media (min-width: 1200px) {
+	.footer {
+		hr {
+			transform: translateX(-1.6%);
+		}
+	}
+
+	.contact {
+		.wrapper {
+			position: absolute;
+			top: 60%;
+			left: 51%;
+			transform: translate(-40%, -60%);
+			flex-direction: row;
+		}
+
+		&__title {
+			margin: 4em 13.1em;
+			transition: color 0.3s;
+
+			&:hover {
+				color: $btn-color;
+			}
+		}
+
+		&__form {
+			margin-left: 0;
+			box-shadow: 0px 5px 13px $shadow-color;
+
+			&-label {
+				margin: 0.5em 1em 0.7em;
+				font-size: 1.6rem;
+			}
+
+			&-input {
+				margin: 0 1em;
+				width: 400px;
+			}
+
+			&-text {
+				margin-bottom: 2.5em;
+				margin: 0 1em 2.5em;
+				min-width: 400px;
+				max-width: 400px;
+				max-height: 200px;
+			}
+
+			&-btn {
+				margin: 0 1.1em;
+				font-size: 1.6rem;
+			}
+		}
+
+		.location {
+			margin-top: -0.2em;
+			margin-left: -1.8em;
+
+			iframe {
+				height: 450px;
+				width: 500px;
+			}
+		}
+	}
+}

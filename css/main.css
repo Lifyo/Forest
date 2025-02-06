@@ -1,0 +1,729 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1300px;
+}
+
+.section-padding {
+  padding: 4em 2em;
+}
+
+.section-title {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2em;
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.nav-desktop {
+  display: none;
+}
+
+.burger-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1em;
+  background: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  z-index: 1000;
+}
+.burger-btn__box {
+  position: relative;
+  width: 40px;
+  height: 30px;
+}
+.burger-btn__bars, .burger-btn__bars::before, .burger-btn__bars::after {
+  position: absolute;
+  right: 0;
+  height: 3px;
+  content: "";
+  background-color: rgb(20, 174, 11);
+}
+.burger-btn__bars {
+  width: 100%;
+}
+.burger-btn__bars::before {
+  top: 13px;
+  width: 60%;
+}
+.burger-btn__bars::after {
+  top: 27px;
+  width: 80%;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 75%;
+  transform: translateX(-101%);
+  background-color: rgba(6, 54, 4, 0.95);
+  z-index: 1000;
+  transition: transform 0.5s;
+}
+.nav--active {
+  transform: translateX(0);
+}
+.nav__items {
+  padding: 2em 0;
+}
+.nav__link {
+  display: block;
+  margin: 0.5em 0;
+  padding: 0.5em 2em;
+  font-size: 3rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.header {
+  position: relative;
+  height: 250px;
+  background-image: url("../src/img/forest-mini.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.header__shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.header__text {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #fff;
+}
+.header__text-title {
+  margin-top: 3px;
+}
+
+.aboutus__box {
+  display: flex;
+  flex-direction: column;
+}
+.aboutus__box-title {
+  margin-bottom: 0.5em;
+}
+.aboutus__text {
+  font-size: 1.4rem;
+}
+.aboutus__img {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.adventure {
+  position: relative;
+  height: 250px;
+  background-image: url("../src/img/main-mini.jpg");
+  background-size: 100%;
+  background-position: center;
+  transition: background-size 1s;
+}
+.adventure:hover {
+  background-size: 120%;
+}
+.adventure__shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.adventure__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.adventure__text-title {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1em 3em;
+  font-size: 1.8rem;
+  color: #fff;
+  border: 1px solid #fff;
+  z-index: 10;
+}
+
+.offer .section-title {
+  margin-bottom: 1em;
+}
+.offer__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.offer__cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5em;
+}
+.offer__card {
+  padding: 1em;
+  margin: 1em;
+  width: 70%;
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+.offer__card-title, .offer__card-price {
+  display: flex;
+  justify-content: center;
+}
+.offer__card-title {
+  font-size: 2.2rem;
+  font-weight: 400;
+}
+.offer__card-price {
+  padding: 0.5em;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+.offer__card-list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.offer__card-list--item {
+  list-style: none;
+}
+.offer__card-list .fa-check {
+  color: rgb(18, 164, 18);
+}
+.offer__card-list .check {
+  margin-right: 2em;
+}
+.offer__card-btn {
+  display: block;
+  margin: 1em auto;
+  margin-top: 1.5em;
+  padding: 0.5em 3em;
+  background-color: #fff;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.offer__card-btn:hover, .offer__card-btn:focus {
+  background-color: rgb(18, 164, 18);
+  box-shadow: 0px 0px 15px rgb(18, 164, 18);
+}
+.offer .fa-minus,
+.offer .disable {
+  color: rgba(0, 0, 0, 0.5);
+}
+.offer__others {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  margin-top: 1em;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.offer__others:focus, .offer__others:hover {
+  box-shadow: 0px 0px 25px rgb(18, 164, 18);
+  text-decoration: none;
+}
+.offer__others .fa-solid {
+  margin-left: 0.5em;
+}
+
+.footer {
+  position: relative;
+  background-color: rgb(228, 227, 227);
+  overflow: hidden;
+}
+.footer hr {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  height: 0.5px;
+  width: 100vw;
+  border: none;
+  background-color: #333;
+  transform: translateX(-7%);
+}
+.footer__logo {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  padding-right: 4em;
+  font-size: 3.6rem;
+  text-decoration: none;
+  color: #333;
+}
+.footer__cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 3em;
+}
+.footer__card {
+  padding: 0.5em;
+  margin-top: 1em;
+  line-height: 2em;
+}
+.footer__card a {
+  text-decoration: none;
+  color: #333;
+}
+.footer__card-item {
+  cursor: pointer;
+}
+.footer__card-last {
+  margin-top: -1em;
+}
+.footer__bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: -3em;
+  padding-right: 2em;
+}
+
+.offers {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../src/img/forest-mini.jpg");
+}
+.offers__shadow {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.offers__cards {
+  display: flex;
+  flex-direction: column;
+}
+.offers__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1em;
+  padding: 1em;
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  z-index: 100;
+}
+.offers__card-img {
+  width: 95%;
+  border-radius: 8px;
+}
+.offers__card-title {
+  padding: 0.5em 0;
+  transition: color 0.3s;
+}
+.offers__card-title:hover {
+  color: rgb(18, 164, 18);
+}
+.offers__card-title, .offers__card-text {
+  text-align: center;
+  color: #fff;
+}
+
+.contact {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 670px;
+  background-image: url("../src/img/forest-mini.jpg");
+}
+.contact__title {
+  margin: 1em 5.5em;
+  margin-bottom: 0;
+  padding: 0.4em 0;
+  color: #fff;
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+.contact__shadow {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.contact .wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.contact__form, .contact__form-top {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.5em;
+  margin-top: 1em;
+  font-size: 1.2rem;
+  z-index: 100;
+}
+.contact__form-label, .contact__form-top-label {
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  color: #fff;
+  text-transform: uppercase;
+}
+.contact__form-input, .contact__form-top-input {
+  margin-bottom: 1em;
+  padding: 0.6em 1.2em;
+  width: 70%;
+  border: none;
+  border-radius: 8px;
+}
+.contact__form-text, .contact__form-top-text {
+  margin-bottom: 2em;
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 8px;
+  min-width: 70%;
+  max-width: 70%;
+  width: 70%;
+  min-height: 100px;
+  max-height: 150px;
+}
+.contact__form-btn, .contact__form-top-btn {
+  align-self: flex-start;
+  padding: 1em;
+  margin-left: 0.5em;
+  width: 50%;
+  max-width: 300px;
+  text-transform: uppercase;
+  background-color: #fff;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.contact__form-btn:hover, .contact__form-btn:focus, .contact__form-top-btn:hover, .contact__form-top-btn:focus {
+  background-color: rgb(18, 164, 18);
+  box-shadow: 0px 0px 15px rgb(18, 164, 18);
+}
+.contact .location {
+  margin: 1em;
+  margin-top: 2em;
+  z-index: 100;
+}
+.contact .location iframe {
+  width: 350px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+@media (min-width: 567px) {
+  .header__text {
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 768px) {
+  .burger-btn__box {
+    width: 40px;
+    height: 30px;
+  }
+  .burger-btn__bars::after {
+    top: 13px;
+  }
+  .burger-btn__bars::before {
+    top: 27px;
+  }
+  .aboutus__box {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .aboutus__box-img {
+    width: 48%;
+  }
+  .aboutus__box-text {
+    width: 47%;
+  }
+  .aboutus__img {
+    margin-bottom: 0;
+    max-height: 500px;
+  }
+  .adventure {
+    height: 300px;
+  }
+  .adventure__text-title {
+    font-size: 3rem;
+  }
+  .offer__cards {
+    flex-direction: row;
+  }
+  .offer__card {
+    margin: 0.5em;
+    min-height: 300px;
+  }
+  .offer__card-btn {
+    padding: 1em 4em;
+    margin-top: 2.5em;
+  }
+  .offer__others {
+    margin: 2em 7em;
+  }
+  .footer__logo {
+    top: 33%;
+  }
+  .footer__cards {
+    margin-left: 10em;
+  }
+  .footer hr {
+    transform: translateX(-5%);
+  }
+  .offers {
+    background-image: url("../src/img/forest-big.jpg");
+  }
+  .offers__card {
+    margin: 2em;
+    padding: 1.5em;
+  }
+  .offers__card-title {
+    font-size: 2.5rem;
+  }
+  .offers__card-text {
+    font-size: 1.8rem;
+  }
+  .offers__card-img {
+    width: 90%;
+  }
+  .contact {
+    height: 900px;
+  }
+  .contact__title {
+    margin: 2em 5.2em 1.2em 5.2em;
+  }
+  .contact__form {
+    margin-left: 7.6em;
+    font-size: 1.6rem;
+  }
+  .contact__form-label, .contact__form-input {
+    font-size: 1.6rem;
+  }
+  .contact .location iframe {
+    margin-top: 2em;
+    margin-left: 6.9em;
+    width: 71%;
+    height: 300px;
+  }
+}
+@media (min-width: 992px) {
+  .nav-mobile,
+  .burger-btn {
+    display: none;
+  }
+  .nav-desktop {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 9vh;
+    background-color: #fff;
+    z-index: 5000;
+  }
+  .nav-desktop__logo {
+    font-size: 3.5rem;
+    text-decoration: none;
+    color: #333;
+  }
+  .nav-desktop__link {
+    padding: 1.5em;
+    margin: 0 auto;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s, background-color 0.3s;
+  }
+  .nav-desktop__link:hover {
+    color: #fff;
+    background-color: #333;
+  }
+  .active {
+    color: #fff;
+    background-color: #333;
+  }
+  .header {
+    height: 500px;
+    background-image: url("../src/img/forest-big.jpg");
+  }
+  .header__text {
+    left: 15%;
+    top: 55%;
+    transform: translateY(-50%);
+    padding: 1em;
+    font-size: 2rem;
+  }
+  .section-title {
+    font-size: 3.5rem;
+  }
+  .aboutus__text {
+    line-height: 2.5rem;
+  }
+  .aboutus__box {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .aboutus__box-img {
+    width: 45%;
+  }
+  .aboutus__box-text {
+    width: 50%;
+    font-size: 2rem;
+  }
+  .adventure {
+    height: 400px;
+    background-image: url("../src/img/forest-big.jpg");
+  }
+  .adventure__text-title {
+    padding: 1em 3em;
+    font-size: 3.6rem;
+  }
+  .offer__title {
+    margin-bottom: 1em;
+  }
+  .offer__card {
+    margin: 1em;
+    width: 25%;
+  }
+  .offer__card-title {
+    font-size: 2.6rem;
+  }
+  .offer__card-price {
+    font-size: 2.6rem;
+  }
+  .offer__card-list {
+    padding: 0.5em 0;
+  }
+  .offer__card-list--item {
+    line-height: 1.8em;
+  }
+  .offer__card-btn {
+    margin-top: 1.5em;
+    padding: 1em 5em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .offer__others {
+    margin: 1em 23em;
+  }
+  .footer__logo {
+    left: 23%;
+    font-size: 4rem;
+  }
+  .footer__cards {
+    justify-content: flex-end;
+    margin-right: 10em;
+  }
+  .footer__card {
+    padding: 2em;
+    font-size: 1.7rem;
+  }
+  .footer hr {
+    transform: translateX(-3%);
+  }
+  .offers__cards {
+    display: flex;
+    flex-direction: row;
+    margin-top: -3em;
+    margin-bottom: 8em;
+    margin-left: -17em;
+  }
+  .offers__card-img {
+    width: 500px;
+    height: 350px;
+    transition: transform 1s;
+    overflow: hidden;
+  }
+  .offers__card-img:hover {
+    transform: scale(1.05);
+  }
+  .contact {
+    background-image: url("../src/img/forest-big.jpg");
+  }
+}
+@media (min-width: 1200px) {
+  .footer hr {
+    transform: translateX(-1.6%);
+  }
+  .contact .wrapper {
+    position: absolute;
+    top: 60%;
+    left: 51%;
+    transform: translate(-40%, -60%);
+    flex-direction: row;
+  }
+  .contact__title {
+    margin: 4em 13.1em;
+    transition: color 0.3s;
+  }
+  .contact__title:hover {
+    color: rgb(18, 164, 18);
+  }
+  .contact__form {
+    margin-left: 0;
+    box-shadow: 0px 5px 13px rgba(0, 0, 0, 0.5);
+  }
+  .contact__form-label {
+    margin: 0.5em 1em 0.7em;
+    font-size: 1.6rem;
+  }
+  .contact__form-input {
+    margin: 0 1em;
+    width: 400px;
+  }
+  .contact__form-text {
+    margin-bottom: 2.5em;
+    margin: 0 1em 2.5em;
+    min-width: 400px;
+    max-width: 400px;
+    max-height: 200px;
+  }
+  .contact__form-btn {
+    margin: 0 1.1em;
+    font-size: 1.6rem;
+  }
+  .contact .location {
+    margin-top: -0.2em;
+    margin-left: -1.8em;
+  }
+  .contact .location iframe {
+    height: 450px;
+    width: 500px;
+  }
+}/*# sourceMappingURL=main.css.map */

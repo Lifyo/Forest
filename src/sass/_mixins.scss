@@ -1,0 +1,20 @@
+@use './colors' as *;
+
+@mixin middle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin shadowBg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: $shadow-color;
+}
+
+@mixin bgPosition {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+}
